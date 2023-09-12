@@ -8,12 +8,10 @@ public class AlwaysPaperPlayer implements Player{
     private Handmoves move;
 
     public Handmoves getHandmove(){
-        return move;
+        return Handmoves.PAPER;
     }
 
-    public Player createPlayer(){
-        return new AlwaysPaperPlayer();
-    }
+
 
 
 }
