@@ -4,3 +4,27 @@
  * This is a general purpose Gradle build.
  * To learn more about Gradle by exploring our Samples at https://docs.gradle.org/8.3/samples
  */
+plugins {
+    id 'application' 
+}
+
+repositories {
+    mavenCentral() 
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3' 
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+}
+
+application {
+    mainClass = 'Game' 
+}
+
+tasks.named('test') {
+    useJUnitPlatform() 
+}
+
+
