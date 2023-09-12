@@ -1,6 +1,6 @@
 package player;
 
-//Dieser Spieler wählt immer die Handstellung Papier
+//This player chooses always Paper
 public class AlwaysPaperPlayer implements Player{
 
 }

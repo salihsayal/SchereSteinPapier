@@ -1,6 +1,6 @@
 package player;
 
-//Dieser Spieler wählt zufällige Handstellungen
+//This player chooses random moves
 public class ChoosingRandomPlayer implements Player{
 
 }
