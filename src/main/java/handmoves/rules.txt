@@ -1,0 +1,3 @@
+Rock defeats Scissors
+Scissors defeats Paper
+Paper defeats Rock
