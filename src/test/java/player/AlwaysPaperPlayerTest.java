@@ -10,11 +10,14 @@ class AlwaysPaperPlayerTest {
 
     @Test
     @DisplayName("Check, if AlwaysPaperPlayer's move is always Paper")
-    void AlwaysPaperPlayerTest_getHandmoveTest(){
+    void test_getHandmoveTest(){
         Player player = new AlwaysPaperPlayer();
         Handmoves move = player.getHandmove();
         assertThat(move).isEqualTo(Handmoves.PAPER);
 
     }
+
+
+
 
 }

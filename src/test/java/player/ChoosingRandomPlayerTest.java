@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ChoosingRandomPlayerTest {
     @Test
     @DisplayName("Check, if ChoosingRandomPlayer is choosing randomly Paper")
-    void ChoosingRandomPlayerTest_getHandmovePaperTest(){
+    void test_getHandmovePaperTest(){
         Player player = new ChoosingRandomPlayer();
         int a= 0;
         boolean contains = false;
@@ -28,7 +28,7 @@ class ChoosingRandomPlayerTest {
 
     @Test
     @DisplayName("Check, if ChoosingRandomPlayer is choosing randomly Rock")
-    void ChoosingRandomPlayerTest_getHandmoveRockTest(){
+    void test_getHandmoveRockTest(){
         Player player = new ChoosingRandomPlayer();
         int a= 0;
         boolean contains = false;
@@ -46,7 +46,7 @@ class ChoosingRandomPlayerTest {
 
     @Test
     @DisplayName("Check, if ChoosingRandomPlayer is choosing randomly Scissors")
-    void ChoosingRandomPlayerTest_getHandmoveScissorsTest(){
+    void test_getHandmoveScissorsTest(){
         Player player = new ChoosingRandomPlayer();
         int a= 0;
         boolean contains = false;
