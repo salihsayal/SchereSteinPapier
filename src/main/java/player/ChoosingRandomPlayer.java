@@ -9,6 +9,9 @@ import java.util.List;
 public class ChoosingRandomPlayer implements Player{
     private Handmoves move;
 
+    public int scoreWin = 0;
+    public int scoreDraw = 0;
+
     public Handmoves getHandmove(){
         return randomMove();
     }
@@ -30,6 +33,14 @@ public class ChoosingRandomPlayer implements Player{
     private int getRandomNumber(int max, int min){
         return (int) (Math.random() * (max)+min);
     }
+
+    public void scoreInc(){
+        scoreWin++;
+    }
+    public int getScore(){return scoreWin;}
+
+    public void scoreDraw(){ scoreDraw++; }
+    public int getScoreDraw(){return scoreDraw;}
 
 
 }
