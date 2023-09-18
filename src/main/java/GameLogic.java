@@ -19,7 +19,7 @@ public class GameLogic {
 
     //includes the relation between handmoves
     private Multimap<String, String> handmoveRules;
-    private static Game game;
+    private Game game;
 
     private GameLogic(Game game) {
         this.game = game;
