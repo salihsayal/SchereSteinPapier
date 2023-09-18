@@ -1,4 +1,4 @@
-package Game;
+package game;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;

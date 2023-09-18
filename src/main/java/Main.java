@@ -1,4 +1,4 @@
-import Game.Game;
+import game.Game;
 import player.*;
 
 import java.util.ArrayList;
