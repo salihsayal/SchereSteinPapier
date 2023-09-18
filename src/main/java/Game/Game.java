@@ -1,6 +1,7 @@
+package Game;
+
 import player.Player;
 
-import java.io.IOException;
 import java.util.List;
 
 public class Game {
@@ -22,11 +23,11 @@ public class Game {
         return this.playerList;
     }
 
-    public Player getPlayerA(){
+    public Player getPlayerA() {
         return this.playerList.get(0);
     }
 
-    public Player getPlayerB(){
+    public Player getPlayerB() {
         return this.playerList.get(1);
     }
 
@@ -40,10 +41,10 @@ public class Game {
     }
 
     @Override
-    public String toString(){
-        return "Spieler A gewinnt "+ getPlayerA().getScore() + " von "+getNumberOfRounds()+" Spielen\n" +
-                "Spieler B gewinnt "+ getPlayerB().getScore() + " von "+getNumberOfRounds()+ " Spielen\n" +
-                "Unentschieden: "+getPlayerA().getScoreDraw()+" von "+ getNumberOfRounds()+ " Spielen";
+    public String toString() {
+        return "Spieler A gewinnt " + getPlayerA().getScore() + " von " + getNumberOfRounds() + " Spielen\n" +
+                "Spieler B gewinnt " + getPlayerB().getScore() + " von " + getNumberOfRounds() + " Spielen\n" +
+                "Unentschieden: " + getPlayerA().getScoreDraw() + " von " + getNumberOfRounds() + " Spielen";
     }
 
 }

@@ -1,3 +1,5 @@
+package Game;
+
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 import handmoves.Handmoves;
@@ -50,7 +52,7 @@ public class GameLogic {
 
     }
 
-    //turns the rules.txt file into a MultiMap.
+    // turns the rules.txt file into a MultiMap.
     // The key is a handmove. The value of a key is a handmove, which is weak against the key,
     private Multimap<String, String> getHandmoveRules() {
         //List<String> rules = Files.readAllLines(Paths.get("src/main/java/handmoves/rules.txt"));
@@ -70,6 +72,7 @@ public class GameLogic {
 
     }
 
+    // reads the rules.txt file and adds the lines to a list
     private List<String> readRulesTXT() {
         List<String> rules = new ArrayList<>();
         try (Stream<String> lines = Files.lines(Paths.get("src/main/java/handmoves/rules.txt"))) {
