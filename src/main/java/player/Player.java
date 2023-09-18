@@ -7,7 +7,9 @@ public interface Player {
 
     //increases the score of player by 1
     public void scoreInc();
+
     public int getScore();
+
     public int getScoreDraw();
 
     //increases the amount of draws by 1

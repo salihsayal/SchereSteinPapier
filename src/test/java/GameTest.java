@@ -29,7 +29,7 @@ class GameTest {
 
     @Test
     @DisplayName("Test, if score of Paper Player is 0")
-    void test_PaperAgainstScissors(){
+    void test_PaperAgainstScissors() {
         Player playerA = new AlwaysPaperPlayer();
         Player playerB = new AlwaysScissorsPlayer();
         List<Player> playerList = new ArrayList<>(List.of(playerA, playerB));
@@ -78,7 +78,7 @@ class GameTest {
     //Relation between Rock and Scissors
 
     @Test
-    @DisplayName("Test, if score of Rock Player is 20")
+    @DisplayName("Test, if score of Rock Player is 40")
     void test_RockAgainstScissors(){
         Player playerA = new AlwaysRockPlayer();
         Player playerB = new AlwaysScissorsPlayer();
@@ -94,7 +94,7 @@ class GameTest {
     //Relation between Paper and Rock
 
     @Test
-    @DisplayName("Test, if score of Paper Player is 70")
+    @DisplayName("Test, if score of Paper Player is 0")
     void test_RockAgainstPaper(){
         Player playerA = new AlwaysPaperPlayer();
         Player playerB = new AlwaysRockPlayer();
@@ -153,7 +153,21 @@ class GameTest {
         Game game = Game.createGame(playerList, 90);
         game.run();
 
-        assertThat(playerA.getScore()).isEqualTo(90);
+        assertThat(playerA.getScoreDraw()).isEqualTo(90);
+
+    }
+
+    @Test
+    @DisplayName("Test, if amount of draw of both player are the same")
+    void test_AmountOfDrawIsSame(){
+        Player playerA = new AlwaysScissorsPlayer();
+        Player playerB = new AlwaysScissorsPlayer();
+        List<Player> playerList = new ArrayList<>(List.of(playerA, playerB));
+
+        Game game = Game.createGame(playerList, 90);
+        game.run();
+
+        assertThat(playerA.getScoreDraw()).isEqualTo(playerB.getScoreDraw());
 
     }
 
