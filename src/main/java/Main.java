@@ -6,7 +6,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args){
 
-        Player playerA = new AlwaysScissorsPlayer();
+        Player playerA = new AlwaysPaperPlayer();
         Player playerB = new ChoosingRandomPlayer();
         List<Player> playerList = new ArrayList<>(List.of(playerA, playerB));
 
