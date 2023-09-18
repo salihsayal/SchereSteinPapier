@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 import com.google.common.collect.Multimap;
@@ -48,22 +50,12 @@ public class GameLogic {
 
     }
 
+    //turns the rules.txt file into a MultiMap.
+    // The key is a handmove. The value of a key is a handmove, which is weak against the key,
     private Multimap<String, String> getHandmoveRules() {
-        /*try {
-            return Files.readAllLines(Paths.get("src/main/java/handmoves/rules.txt"));
-        } catch (IOException e) {
-            System.err.println("Failed to read the file: " + e.getMessage());
-            e.printStackTrace();
-        }
-        return List.of();
+        //List<String> rules = Files.readAllLines(Paths.get("src/main/java/handmoves/rules.txt"));
 
-         */
-        List<String> rules = new ArrayList<>();
-        rules.add("ROCK defeats SCISSORS");
-        rules.add("SCISSORS defeats PAPER");
-        rules.add("PAPER defeats ROCK");
-
-
+        List<String> rules = readRulesTXT();
 
         ListMultimap<String, String> ruleMultimap = ArrayListMultimap.create();
         rules.stream()
@@ -76,6 +68,17 @@ public class GameLogic {
 
         return ruleMultimap;
 
+    }
+
+    private List<String> readRulesTXT() {
+        List<String> rules = new ArrayList<>();
+        try (Stream<String> lines = Files.lines(Paths.get("src/main/java/handmoves/rules.txt"))) {
+            rules = lines.collect(Collectors.toList());
+        } catch (IOException e) {
+            System.out.println(e);
+            rules.addAll(List.of());
+        }
+        return rules;
     }
 
     public static GameLogic createGameLogic(Game game) {
