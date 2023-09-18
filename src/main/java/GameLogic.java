@@ -1,3 +1,5 @@
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
 import handmoves.Handmoves;
 import player.Player;
 
@@ -5,26 +7,24 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+
+
+import com.google.common.collect.Multimap;
 
 public class GameLogic {
 
     //includes the relation between handmoves
-    private List<String> handmoveRules;
+    private Multimap<String, String> handmoveRules;
     private static Game game;
 
-    private GameLogic(Game game){
+    private GameLogic(Game game) {
         this.game = game;
         this.handmoveRules = getHandmoveRules();
 
-        Player playerA = game.getPlayerList().get(0);
-        Player playerB = game.getPlayerList().get(1);
-
         for (int i = 0; i < game.getNumberOfRounds(); i++) {
-            fight(playerA, playerB);
+            fight(game.getPlayerA(), game.getPlayerB());
         }
 
     }
@@ -34,13 +34,21 @@ public class GameLogic {
         Handmoves moveB = playerB.getHandmove();
 
 
-
-
+        if (handmoveRules.containsEntry(moveA.toString(), moveB.toString())) {
+            playerA.scoreInc();
+            return;
+        }
+        if (handmoveRules.containsEntry(moveB.toString(), moveA.toString())) {
+            playerB.scoreInc();
+            return;
+        }
+        playerA.scoreDraw();
+        playerB.scoreDraw();
 
 
     }
 
-    private List<String> getHandmoveRules(){
+    private Multimap<String, String> getHandmoveRules() {
         /*try {
             return Files.readAllLines(Paths.get("src/main/java/handmoves/rules.txt"));
         } catch (IOException e) {
@@ -51,32 +59,28 @@ public class GameLogic {
 
          */
         List<String> rules = new ArrayList<>();
-        rules.add("Rock defeats Scissors");
-        rules.add("Scissors defeats Paper");
-        rules.add("Paper defeats Rock");
+        rules.add("ROCK defeats SCISSORS");
+        rules.add("SCISSORS defeats PAPER");
+        rules.add("PAPER defeats ROCK");
 
-        return rules;
+
+
+        ListMultimap<String, String> ruleMultimap = ArrayListMultimap.create();
+        rules.stream()
+                .map(rule -> rule.split(" defeats "))
+                .forEach(ruleParts -> {
+                    String key = ruleParts[0];
+                    String value = ruleParts[1];
+                    ruleMultimap.put(key, value);
+                });
+
+        return ruleMultimap;
+
     }
 
-    public static GameLogic createGameLogic(Game game){
+    public static GameLogic createGameLogic(Game game) {
         return new GameLogic(game);
     }
 
-
-    private static String[] splitLine(String line){
-        return line.split(" ");
-    }
-
-    private static boolean filterPlayerAHandmove(String[] lineParts){
-        return lineParts[0].equals(game.getPlayerList().get(0));
-    }
-
-    private static String getPlayerAMove(String[] lineParts){
-        return lineParts[0];
-    }
-
-    private static String isStrongAgainst(String[] lineParts){
-        return lineParts[2];
-    }
 
 }
