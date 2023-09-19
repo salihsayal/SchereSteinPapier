@@ -1,6 +1,6 @@
 # SchereSteinPapier
-SchereSteinPapier is a Rock Paper Scissors simulation, where 2 players, one that is always using paper and one that uses random hand gestures, play against each other rock paper scissors.
-This project I developed is part of an employment.
+SchereSteinPapier is a Rock Paper Scissors simulation, where two players are involved: one who always uses paper and another who uses random hand gestures. 
+They play against each other in a game of rock, paper, scissors. This project, which I developed, is part of my employment.
 
 ## Technologies Used
 - Java
